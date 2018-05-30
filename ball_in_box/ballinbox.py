@@ -6,13 +6,15 @@ import validate as val
 __all__ = ['ball_in_box']
 
 def divideArea(L):
-   #将正方形区域分成100*100个点，放入点列表中
-    points=numpy.linspace(-1,1,250)
+   #将正方形区域分成很多个点，放入点列表中
+   #divide the area
+    points=numpy.linspace(-1,1,150)
     for x in points:
         for y in points:
             L.append((x,y))
     return L
-    
+  
+
 def calDistance(center,blockOrCircle):
     return math.sqrt((center[0]-blockOrCircle[0])**2+(center[1]-blockOrCircle[1])**2)
 
@@ -27,7 +29,8 @@ def ball_in_box(m=5, blockers=[(0.5, 0.5), (0.5, -0.5), (0.5, 0.3)]):
     allPointsList=divideArea(L=[])
     circlesList=[]
 
-    #依次找符合条件的最大圆
+    #依次找符合条件的最大圆.
+    
     for i in range(0,m):
         maxCircle=[0,0,0]
         for point in allPointsList:
